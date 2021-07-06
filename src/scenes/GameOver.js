@@ -3,12 +3,17 @@ class GameOver extends Phaser.Scene {
         super("GameOver");
     }
 
+    preload() {
+        this.load.image('gameOver', './Assets/GameOver-01.png');
+      }
+      
+
     create() {
         this.scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#Fb3141',
-            color: 'white', //'#843605',
+            backgroundColor: '#949494',
+            color: 'black', //'#843605',
             align: 'center',
             padding: {
                 top: 5,
@@ -16,9 +21,11 @@ class GameOver extends Phaser.Scene {
             },
             fixedWidth: 170
         }
-        this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', this.scoreConfig).setOrigin(0.5);
+        this.add.text(game.config.width/5*2, game.config.height/4 *3, 'Score:', this.scoreConfig).setOrigin(0.5);
+        this.add.text(game.config.width/5*3, game.config.height/4 *3, Math.floor(score)*10, this.scoreConfig).setOrigin(0.5);
+        
         this.GameOver = true;
-
+        
         this.keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
     }
 
